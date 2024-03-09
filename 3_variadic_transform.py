@@ -1,5 +1,5 @@
 import tensorflow as tf
-from tensorflow.keras.layers import Input, Conv2D, Activation, GlobalAveragePooling2D, Dense
+from tensorflow.keras.layers import Input, Conv2D, Activation, GlobalAveragePooling2D, Reshape
 import numpy as np
 
 mnist = tf.keras.datasets.mnist
@@ -16,9 +16,11 @@ for _ in range(3):
 
 pooled_layer = GlobalAveragePooling2D()(conv_layer)
 
-# Change input shape to (None, None, 1)
-output_layer = Conv2D(filters=10, kernel_size=(1, 1))(input_layer)
-output_layer = GlobalAveragePooling2D()(output_layer)
+# Reshape the tensor to have the shape (1, 1, 128)
+reshaped_layer = Reshape((1, 1, 128))(pooled_layer)
+
+# Change the final Dense layer to Conv2D with 10 filters and add GlobalAveragePooling2D
+output_layer = Conv2D(filters=10, kernel_size=(1, 1), activation="softmax", name="output_layer")(reshaped_layer)
 
 model = tf.keras.models.Model(inputs=[input_layer], outputs=[output_layer])
 
@@ -27,9 +29,9 @@ model.compile(optimizer="Adam", loss=tf.keras.losses.SparseCategoricalCrossentro
 
 # Training
 model.fit(
-    x_train,
+    x_train[..., np.newaxis],  # Add channel dimension
     y_train,
-    validation_data=(x_test, y_test),
+    validation_data=(x_test[..., np.newaxis], y_test),  # Add channel dimension
     batch_size=32,
     epochs=5
 )
@@ -37,7 +39,7 @@ model.fit(
 # ======== Test the model after training ======== 
 
 # Get the 20 first images from the test set
-test_logits = model(x_test[:20, ...])
+test_logits = model(x_test[:20, ..., np.newaxis])
 
 # Apply the softmax function to the logits to get the probabilities
 test_probabilities = tf.keras.activations.softmax(test_logits).numpy()
@@ -46,7 +48,7 @@ test_probabilities = tf.keras.activations.softmax(test_logits).numpy()
 test_predictions = np.argmax(test_probabilities, axis=-1)
 
 # Evaluate the model on the test set
-test_loss, test_accuracy = model.evaluate(x_test, y_test, batch_size=32)
+test_loss, test_accuracy = model.evaluate(x_test[..., np.newaxis], y_test, batch_size=32)
 
 print("=========== RESULTS AFTER TRAINING ===========")
 
