@@ -50,3 +50,13 @@ This model is a Convolutional Neural Network (CNN) with 7 layers:
 - **3 Convolutional layers** of kernel size 7x7
 - **Pooling layer**
 - **Output layer**
+
+**<u>Idea of this model:</u>**<br>
+Convolutional layers are more suited for image data as they can extract spatial hierarchies of features from the images.
+
+### 3. Variadic Convolutional Neural Network
+
+This model is a Variadic Convolutional Neural Network (VCNN) with almost the same architecture as the CNN model. The difference is that the final dense layer becomes a convolutional layer of kernel size 1x1.
+
+**<u>Idea of this model:</u>**<br>
+The purpose of this model is to be capable of handling images of varying sizes.
