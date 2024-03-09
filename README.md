@@ -60,3 +60,10 @@ This model is a Variadic Convolutional Neural Network (VCNN) with almost the sam
 
 **<u>Idea of this model:</u>**<br>
 The purpose of this model is to be capable of handling images of varying sizes.
+
+### 4. Residual transformation
+
+This model is a Convolutional Variadic Residual Neural Network (CVRNN) with the same architecture as the VCNN model. The difference is that the model uses residual transformations. 
+
+**<u>Idea of this model:</u>**<br>
+The purpose of this model is to add shortcuts to the network to avoid the [vanishing gradient problem](https://en.wikipedia.org/wiki/Vanishing_gradient_problem).
