@@ -54,7 +54,7 @@ This model is a Convolutional Neural Network (CNN) with 7 layers:
 **<u>Idea of this model:</u>**<br>
 Convolutional layers are more suited for image data as they can extract spatial hierarchies of features from the images.
 
-### 3. Variadic Convolutional Neural Network
+### 3. Variadic transformation
 
 This model is a Variadic Convolutional Neural Network (VCNN) with almost the same architecture as the CNN model. The difference is that the final dense layer becomes a convolutional layer of kernel size 1x1.
 
@@ -67,3 +67,10 @@ This model is a Convolutional Variadic Residual Neural Network (CVRNN) with the 
 
 **<u>Idea of this model:</u>**<br>
 The purpose of this model is to add shortcuts to the network to avoid the [vanishing gradient problem](https://en.wikipedia.org/wiki/Vanishing_gradient_problem).
+
+### 5. Sequentialy sepatated transformation
+
+This model use the same architecture as the CVRNN model. The difference is that the model uses sequentially separated transformations. 
+
+**<u>Idea of this model:</u>**<br>
+This model involve breaking down larger convolutions into smaller, more manageable parts, which can increase depth and reduce parameters.
