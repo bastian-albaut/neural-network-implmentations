@@ -81,3 +81,18 @@ This model use the same architecture as before. The difference is that the model
 
 **<u>Idea of this model:</u>**<br>
 The purpose of this model is to reduce the number of parameters of the network.
+
+### 7. Cifar10 dataset transformation
+
+This model use the same architecture as the previous one. The difference is that the model uses the Cifar10 dataset, which contains 60,000 32x32 color images in 10 different classes.<br>
+**Classes in Cifar10 dataset:** 
+- airplane
+- automobile
+- bird
+- cat
+- deer
+- dog
+- frog
+- horse
+- ship
+- truck
