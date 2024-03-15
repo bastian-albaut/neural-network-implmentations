@@ -74,3 +74,10 @@ This model use the same architecture as the CVRNN model. The difference is that 
 
 **<u>Idea of this model:</u>**<br>
 This model involve breaking down larger convolutions into smaller, more manageable parts, which can increase depth and reduce parameters.
+
+### 6. Encoder Decoder transformation
+
+This model use the same architecture as before. The difference is that the model uses encoder-decoder transformations. This involve apply a channel reduction transformation before applying the sequential separation and transform back to the original size at the end to sum for the residual block, thus lowering the number of parameters of the network.
+
+**<u>Idea of this model:</u>**<br>
+The purpose of this model is to reduce the number of parameters of the network.
