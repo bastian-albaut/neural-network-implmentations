@@ -1,4 +1,4 @@
-# DeepLearning
+# Multiple Neural Network implementations
 
 In this project I use Keras, an open-source and high-level neural networks API written in Python. I use Keras model that is the primary entity that represents the architecture of a neural network. Each file corresponds to a different model 
 associated to a specific type of neural networks.
